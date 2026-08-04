@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:external_app_launcher/external_app_launcher.dart';
 import "../widgets/navigation_buttons.dart";
 
 class HomePage extends StatelessWidget {
@@ -10,10 +11,29 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home"),
       ),
-      body: const Center(
-        child: Text(
-          "Main page", 
-          style: TextStyle(fontSize: 24)
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+            const Text(
+              "Main page", 
+              style: TextStyle(fontSize: 24)
+            ),
+
+            const SizedBox(height: 80),
+
+            ElevatedButton.icon(
+              onPressed: () async {
+                await LaunchApp.openApp(  
+                  androidPackageName: 'com.and.games505.TerrariaPaid', 
+                  openStore: true
+                );
+              },
+              icon: const Icon(Icons.play_arrow),
+              label: const Text("Launch Terraria"),
+            )
+          ]
         ),
       ),
       bottomNavigationBar: const NavigationButtons(),
