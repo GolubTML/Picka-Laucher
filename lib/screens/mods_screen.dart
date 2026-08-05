@@ -3,6 +3,8 @@ import "../widgets/navigation_buttons.dart";
 import "../widgets/mod_card.dart";
 import "../models/mod_info.dart";
 import "../services/mods_loader.dart";
+import '../widgets/mod_creator_dialog.dart';
+import '../services/mod_creation.dart';
 
 class ModsPage extends StatefulWidget {
   const ModsPage({super.key});
@@ -46,9 +48,43 @@ class _ModsPageState extends State<ModsPage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () async {
+          final mod = await showDialog<ModInfo>(
+            context: context,
+            builder: (_) => const ModCreatorDialog(),
+          );
+
+          if (!mounted) return;
+
+          if (mod == null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Cannot create mod :(")),
+            );
+            return;
+          }
+
+          try {
+            await createMod(mod);
+
+            if (!mounted) return;
+
+            setState(() {});
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Mod created successfully!"),
+              ),
+            );
+          } catch (e) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Error: $e"),
+              ),
+            );
+          }
+        },
         tooltip: "Create basic mod",
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       bottomNavigationBar: const NavigationButtons(),
     );
