@@ -1,4 +1,4 @@
-package com.example.picka_launcher
+package com.picka.launcher
 
 import android.os.Bundle
 import com.android.apksig.ApkSigner

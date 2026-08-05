@@ -167,7 +167,7 @@ class _PatchScreenState extends State<PatchScreen> {
             const SizedBox(height: 100),
 
             const Text(
-              "Patched APK will be saved in Android/data/com.pickalauncher/files.\n Also, you need to give storage permission to Terraria after patching!",
+              "Patched APK will be saved in Android/data/com.picka.launcher/files.\n Also, you need to give storage permission to Terraria after patching!",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12),
             )

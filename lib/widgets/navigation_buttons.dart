@@ -6,31 +6,38 @@ class NavigationButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.popUntil(context, (route) => route.isFirst);
-          },
-          child: const Text('Home'),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 16,
+          top: 8,
+          bottom: 8,
         ),
-
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/mods');
-          },
-          child: const Text('Mods'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              child: const Text("Home"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/mods");
+              },
+              child: const Text("Mods"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/patch");
+              },
+              child: const Text("Patch"),
+            ),
+          ],
         ),
-
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/patch');
-          },
-          child: const Text('Patch'),
-        ),
-      ]
+      ),
     );
   }
 }
