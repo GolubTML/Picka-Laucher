@@ -19,6 +19,13 @@ class NavigationButtons extends StatelessWidget {
 
         ElevatedButton(
           onPressed: () {
+            Navigator.pushNamed(context, '/mods');
+          },
+          child: const Text('Mods'),
+        ),
+
+        ElevatedButton(
+          onPressed: () {
             Navigator.pushNamed(context, '/patch');
           },
           child: const Text('Patch'),
