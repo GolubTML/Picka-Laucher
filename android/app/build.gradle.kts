@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.picka_launcher"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -46,4 +46,9 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation("com.android.tools.build:apksig:8.7.0")
+    implementation("net.lingala.zip4j:zip4j:2.11.5")
 }
