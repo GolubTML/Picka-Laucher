@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => const HomePage(),
         '/patch': (context) => const PatchScreen(),
-        '/mods': (context) => const ModsPage(),
+        '/mods': (context) => const ModsScreen(),
       },
       // home: const HomePage(),
     );

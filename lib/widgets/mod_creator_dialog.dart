@@ -66,11 +66,11 @@ class _ModCreatorDialogState extends State<ModCreatorDialog> {
             Navigator.pop(
               context,
               ModInfo(
-                name: _nameController.text, 
-                version: "1.0", 
-                description: _descriptionController.text, 
-                author: _authorController.text, 
-                iconPath: "icon.png", 
+                name: _nameController.text.isEmpty ? "Unknow Mod" : _nameController.text,
+                version: "1.0",
+                description: _descriptionController.text.isEmpty ? "No description provided for this mod..." : _descriptionController.text,
+                author: _authorController.text.isEmpty ? "Unknow Author" : _authorController.text,
+                iconPath: "icon.png",
                 folderPath: ""
               )
             );

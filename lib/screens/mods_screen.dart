@@ -5,15 +5,16 @@ import "../models/mod_info.dart";
 import "../services/mods_loader.dart";
 import '../widgets/mod_creator_dialog.dart';
 import '../services/mod_creation.dart';
+import '../screens/mod_page.dart';
 
-class ModsPage extends StatefulWidget {
-  const ModsPage({super.key});
+class ModsScreen extends StatefulWidget {
+  const ModsScreen({super.key});
 
   @override
-  State<ModsPage> createState() => _ModsPageState();
+  State<ModsScreen> createState() => _ModsScreenState();
 }
 
-class _ModsPageState extends State<ModsPage> {
+class _ModsScreenState extends State<ModsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +42,21 @@ class _ModsPageState extends State<ModsPage> {
           return ListView.builder(
             itemCount: mods.length,
             itemBuilder: (context, index) {
-              return ModCard(mod: mods[index]);
+              return ModCard(
+                mod: mods[index],
+                onTap: () async {
+                  final changed = await Navigator.push<bool>(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (_) => ModPage(mod: mods[index]) 
+                    ),
+                  );
+
+                  if (changed == true) {
+                    setState(() { });
+                  }
+                },
+              );
             },
           );
         }

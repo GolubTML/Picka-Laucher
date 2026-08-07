@@ -5,18 +5,28 @@ import "../models/mod_info.dart";
 
 class ModCard extends StatelessWidget {
   final ModInfo mod;
+  final VoidCallback? onTap;
 
-  const ModCard({super.key, required this.mod});
+  const ModCard({super.key, required this.mod, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.file(
-        File(mod.iconPath),
+      onTap: onTap,
+
+      leading: Container(
         width: 48,
         height: 48,
-        fit: BoxFit.cover,
-        filterQuality: FilterQuality.none,
+        decoration: BoxDecoration(
+          color: const Color(0xFF2B2B2B),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.grey.shade700),
+        ),
+        child: Image.file(
+          File(mod.iconPath),
+          fit: BoxFit.contain,
+          filterQuality: FilterQuality.none,
+        )
       ),
        
       title: Text(mod.name, style: TextStyle(fontFamily: "Terraria", fontSize: 18)),

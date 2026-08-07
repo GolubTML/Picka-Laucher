@@ -17,21 +17,25 @@ Future<List<ModInfo>> loadMods() async {
   await for (final entity in modsDirectory.list()) {
     if (entity is! Directory) continue;
 
-    final configFile = File("${entity.path}/config.json");
+    try {
+      final configFile = File("${entity.path}/config.json");
 
-    if (!await configFile.exists()) {
-      debugPrint("Could not find config.json in ${entity.path} directory!");
-      continue;
+      if (!await configFile.exists()) {
+        continue;
+      }
+
+      final json = jsonDecode(await configFile.readAsString());
+
+      mods.add(
+        ModInfo.fromJson(
+          json,
+          folderPath: entity.path,
+        ),
+      );
+    } catch (e) {
+      debugPrint("Skipping ${entity.path}: $e");
     }
-
-    final json = jsonDecode(await configFile.readAsString());
-
-    mods.add(
-      ModInfo.fromJson(
-        json,
-        folderPath: entity.path,
-      ),
-    );
   }
+
   return mods;
 }
