@@ -18,7 +18,7 @@ class _ModsPageState extends State<ModsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mods"),
+        title: Text("Mods", style: TextStyle(fontFamily: "Terraria")),
       ),
       body: FutureBuilder<List<ModInfo>>(
         future: loadMods(),
@@ -29,13 +29,13 @@ class _ModsPageState extends State<ModsPage> {
           }
 
           if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
+            return Center(child: Text("Error: ${snapshot.error}", style: TextStyle(fontFamily: "Terraria")));
           }
 
           final mods = snapshot.data ?? [];
 
           if (mods.isEmpty) {
-            return const Center(child: Text("There is no mods yet.. :("));
+            return const Center(child: Text("There is no mods yet.. :(", style: TextStyle(fontFamily: "Terraria")));
           }
 
           return ListView.builder(
@@ -58,7 +58,7 @@ class _ModsPageState extends State<ModsPage> {
 
           if (mod == null) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Cannot create mod :(")),
+              const SnackBar(content: Text("Cannot create mod :(", style: TextStyle(fontFamily: "Terraria"))),
             );
             return;
           }
@@ -72,13 +72,13 @@ class _ModsPageState extends State<ModsPage> {
 
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text("Mod created successfully!"),
+                content: Text("Mod created successfully!", style: TextStyle(fontFamily: "Terraria")),
               ),
             );
           } catch (e) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("Error: $e"),
+                content: Text("Error: $e", style: TextStyle(fontFamily: "Terraria")),
               ),
             );
           }

@@ -19,15 +19,16 @@ class ModCard extends StatelessWidget {
         filterQuality: FilterQuality.none,
       ),
        
-      title: Text(mod.name),
+      title: Text(mod.name, style: TextStyle(fontFamily: "Terraria", fontSize: 18)),
       
       subtitle: Text(
         "${mod.author}\n${mod.description}",
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
+        style: TextStyle(fontFamily: "Terraria", fontSize: 18)
       ),
 
-      trailing: Text(mod.version),
+      trailing: Text(mod.version, style: TextStyle(fontFamily: "Terraria", fontSize: 18)),
     );
   }
 }

@@ -24,7 +24,7 @@ class _ModCreatorDialogState extends State<ModCreatorDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Create Mod"),
+      title: Text("Create Mod", style: TextStyle(fontFamily: "Terraria")),
 
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -58,7 +58,7 @@ class _ModCreatorDialogState extends State<ModCreatorDialog> {
           onPressed: () {
             Navigator.pop(context);
           }, 
-          child: const Text("Cancel"),
+          child: const Text("Cancle", style: TextStyle(fontFamily: "Terraria")),
         ),
 
         ElevatedButton(
@@ -75,7 +75,7 @@ class _ModCreatorDialogState extends State<ModCreatorDialog> {
               )
             );
           }, 
-          child: const Text("Create"),
+          child: const Text("Create", style: TextStyle(fontFamily: "Terraria")),
         )
       ],
     );

@@ -9,7 +9,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text(
+          "Home",
+          style: TextStyle(fontFamily: "Terraria"),
+        ),
       ),
       body: Center(
         child: Column(
@@ -18,7 +21,7 @@ class HomePage extends StatelessWidget {
           children: [
             const Text(
               "Main page", 
-              style: TextStyle(fontSize: 24)
+              style: TextStyle(fontFamily: "Terraria", fontSize: 28)
             ),
 
             const SizedBox(height: 80),
@@ -31,7 +34,7 @@ class HomePage extends StatelessWidget {
                 );
               },
               icon: const Icon(Icons.play_arrow),
-              label: const Text("Launch Terraria"),
+              label: const Text("Launch Terraria", style: TextStyle(fontFamily: "Terraria", fontSize: 18)),
             )
           ]
         ),

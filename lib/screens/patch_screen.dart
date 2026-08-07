@@ -55,7 +55,7 @@ class _PatchScreenState extends State<PatchScreen> {
         });
       } else if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Please select a valid APK file.')),
+          const SnackBar(content: Text("Please select a valid APK file.", style: TextStyle(fontFamily: "Terraria"))),
         );
       }
     }
@@ -101,7 +101,7 @@ class _PatchScreenState extends State<PatchScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Done: $signedResult')));
+            .showSnackBar(SnackBar(content: Text("Done: $signedResult", style: TextStyle(fontFamily: "Terraria"))));
       }
 
       final result = await OpenFilex.open(signedApkPath);
@@ -112,7 +112,7 @@ class _PatchScreenState extends State<PatchScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Error: $e')));
+            .showSnackBar(SnackBar(content: Text("Error: $e", style: TextStyle(fontFamily: "Terraria"))));
       }
     } finally {
       if (mounted) {
@@ -126,20 +126,20 @@ class _PatchScreenState extends State<PatchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Patch")),
+      appBar: AppBar(title: Text("Patch", style: TextStyle(fontFamily: "Terraria"))),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: [
-            const Text("Choose apk to patch", style: TextStyle(fontSize: 24)),
+            const Text("Choose apk to patch", style: TextStyle(fontFamily: "Terraria", fontSize: 24)),
 
             if (_selectedApkPath != null)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
                   _selectedApkPath!.split('/').last,
-                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  style: const TextStyle(fontFamily: "Terraria", fontSize: 14, color: Colors.grey),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -149,7 +149,7 @@ class _PatchScreenState extends State<PatchScreen> {
             ElevatedButton.icon(
               onPressed: _pickApkFile,
               icon: const Icon(Icons.folder_open),
-              label: const Text("Select APK"),
+              label: const Text("Select APK", style: TextStyle(fontFamily: "Terraria")),
             ),
 
             const SizedBox(height: 20),
@@ -165,7 +165,7 @@ class _PatchScreenState extends State<PatchScreen> {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : const Icon(Icons.build),
-              label: Text(_isPatching ? "Patching..." : "Patch apk"),
+              label: Text(_isPatching ? "Patching..." : "Patch apk", style: TextStyle(fontFamily: "Terraria")),
             ),
 
             const SizedBox(height: 100),
@@ -173,7 +173,7 @@ class _PatchScreenState extends State<PatchScreen> {
             const Text(
               "Warning: after installing the patch, you need to grant Terraria access rights to the storage!",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(fontFamily: "Terraria", fontSize: 16),
             )
           ],
         ),
