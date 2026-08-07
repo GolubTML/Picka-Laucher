@@ -13,9 +13,10 @@ class ModCard extends StatelessWidget {
     return ListTile(
       leading: Image.file(
         File(mod.iconPath),
-        width: 64,
-        height: 64,
+        width: 48,
+        height: 48,
         fit: BoxFit.cover,
+        filterQuality: FilterQuality.none,
       ),
        
       title: Text(mod.name),

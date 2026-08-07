@@ -17,8 +17,10 @@ Future<void> createMod(ModInfo mod) async {
     "author": mod.author
   };
 
+  const encoder = JsonEncoder.withIndent("    ");
+
   await File("${dir.path}/config.json")
-      .writeAsString(jsonEncode(config));
+      .writeAsString(encoder.convert(config));
 
   await File("${dir.path}/main.lua")
       .writeAsBytes(

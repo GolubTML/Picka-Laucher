@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:file_picker/file_picker.dart";
 import "package:path_provider/path_provider.dart";
+import "package:open_filex/open_filex.dart";
 
 import "../widgets/navigation_buttons.dart";
 import "../patcher/patcher.dart";
@@ -102,6 +103,9 @@ class _PatchScreenState extends State<PatchScreen> {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Done: $signedResult')));
       }
+
+      final result = await OpenFilex.open(signedApkPath);
+      debugPrint(result.toString());
     } catch (e, stackTrace) {
       debugPrint(' Error details: $e');
       debugPrint(' StackTrace: $stackTrace');
@@ -167,7 +171,7 @@ class _PatchScreenState extends State<PatchScreen> {
             const SizedBox(height: 100),
 
             const Text(
-              "Patched APK will be saved in Android/data/com.picka.launcher/files.\n Also, you need to give storage permission to Terraria after patching!",
+              "Warning: after installing the patch, you need to grant Terraria access rights to the storage!",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12),
             )

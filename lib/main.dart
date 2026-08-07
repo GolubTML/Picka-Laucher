@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _requestPermissions() async {
     await PermissionsService.requestStoragePermission();
+    await PermissionsService.requestAPKInstallationPermission();
   }
 
   @override
