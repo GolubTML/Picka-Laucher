@@ -202,6 +202,11 @@ class MainActivity : FlutterActivity() {
         val certChain = keyStore.getCertificateChain(keyAlias).map { it as X509Certificate }
         val signerConfig = ApkSigner.SignerConfig.Builder("signer", privateKey, certChain).build()
 
+        println("Private key: ${privateKey.algorithm}")
+        println("Certificates: ${certChain.size}")
+        println("Alias: $keyAlias")
+        println("Keystore type: ${keyStore.type}")
+
         ApkSigner.Builder(listOf(signerConfig))
             .setInputApk(File(inputApkPath))
             .setOutputApk(File(outputApkPath))
