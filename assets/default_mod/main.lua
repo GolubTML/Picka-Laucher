@@ -12,7 +12,7 @@ local Spawn = picka.getMethodAddr(Player, "Spawn", -1)
 
 -- this will print every time player had spawned, even after death
 picka.hook(Spawn, 1, function(original, instance, context)
-    local hiString = picka.newString("Hello from my mod!")
+    local hiString = picka.newString("Hello from " .. picka.getModName() .. " made by " .. picka.getModAuthor() .. " v" .. picka.getModVersion())
     picka.callNative(NewText, hiString, 255, 255, 255)
 
     picka.callNative(original, instance, context)
